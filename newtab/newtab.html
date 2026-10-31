@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>새 탭</title>
+<!-- 빈 아이콘: 없으면 크롬이 탭에 확장 이름 첫 글자(V) 아이콘을 띄운다 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
+<!-- 검색창 모양 옵션을 그리기 전에 읽어야 깜빡이지 않는다 -->
+<script src="style-option.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400&display=block">
+<style>
+  /* 색은 테마(../manifest.json)와 같은 값 */
+  :root {
+    --bg: #B7CBA9;    /* 세이지 민트: 새 탭 배경 */
+    --title: #E6DDA4; /* 노랑 풍선: 새 탭 글자 */
+    --box: #E9B3BA;   /* 분홍 풍선: 툴바와 같은 색 */
+    --text: #EFECDC;  /* 연아이보리: 툴바 글자와 같은 색 */
+    --box-width: 337px;
+  }
+  /* 크기와 위치는 크롬 기본 새 탭과 같은 값(chrome/browser/resources/new_tab_page의 app.css, logo.css) */
+  @media (min-width: 560px) { :root { --box-width: 449px; } }
+  @media (min-width: 672px) { :root { --box-width: 561px; } }
+  @media (min-width: 900px) { :root { --box-width: 746px; } }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); font-family: system-ui, "Apple SD Gothic Neo", sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 56px; box-sizing: border-box; /* 크롬 새 탭 위쪽 Google 바 높이만큼 */
+  }
+  .logo-area { min-height: 168px; margin-bottom: 38px; display: flex; flex-direction: column; justify-content: flex-end; }
+  /* 크롬 새 탭 로고 자리(272x92)에 Google Sans 글꼴로 쓴 이름 */
+  .logo { height: 92px; line-height: 92px; color: var(--title); font-family: "Google Sans", sans-serif; font-size: 85px; letter-spacing: -1.8px; position: relative; top: -8px; }
+  form { width: var(--box-width); }
+  /* 검색창 모양은 크롬 새 탭 검색창과 같게: 왼쪽 +, 가운데 입력, 오른쪽 마이크, 렌즈, AI 모드 */
+  .box {
+    display: flex; align-items: center; height: 56px; padding: 0 8px 0 8px; box-sizing: border-box;
+    border-radius: 28px; background: var(--box); box-shadow: 0 1px 6px rgba(120, 80, 90, .2);
+  }
+  .box input {
+    flex: 1; min-width: 0; height: 100%; padding: 0 8px; border: 0; outline: 0; background: transparent;
+    color: var(--text); caret-color: var(--text); font: inherit; font-size: 16px;
+  }
+  .box input::placeholder { color: var(--text); }
+  .icon {
+    flex: none; width: 40px; height: 40px; border: 0; border-radius: 50%; padding: 0; cursor: pointer;
+    background: transparent; color: var(--text); display: grid; place-items: center;
+  }
+  .icon:hover, .ai:hover { background-color: rgba(239, 236, 220, .22); }
+  .ai {
+    flex: none; display: flex; align-items: center; gap: 6px; height: 40px; margin-left: 4px; padding: 0 14px 0 12px;
+    border: 0; border-radius: 20px; cursor: pointer; background: rgba(239, 236, 220, .16);
+    color: var(--text); font: inherit; font-size: 14px; font-weight: 500;
+  }
+  /* 투명 검색창 옵션 */
+  .glass .box {
+    background: rgba(239, 236, 220, .35);
+    box-shadow: inset 0 1px 0 rgba(242, 230, 238, .6), 0 12px 40px rgba(80, 90, 130, .18);
+  }
+</style>
+</head>
+<body>
+  <div class="logo-area"><div class="logo">iamcoz</div></div>
+  <form id="search" action="https://www.google.com/search" method="get" role="search">
+    <div class="box">
+      <button class="icon" type="button" id="plus" title="AI 모드에서 파일 추가" aria-label="AI 모드 열기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11 5h2v14h-2zM5 11h14v2H5z"/></svg></button>
+      <input name="q" placeholder="Google에 물어보기" aria-label="Google 검색" autocomplete="off">
+      <button class="icon" type="button" id="mic" title="음성 검색" aria-label="음성 검색">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M9.875 13.523A2.892 2.892 0 0 1 9 11.398v-6c0-.832.293-1.539.875-2.125A2.898 2.898 0 0 1 12 2.398c.832 0 1.543.293 2.125.875.582.586.875 1.293.875 2.125v6c0 .836-.293 1.543-.875 2.125-.582.586-1.293.875-2.125.875-.832 0-1.543-.289-2.125-.875Zm1.227 5.977v-1.574a6.285 6.285 0 0 1-3.766-1.84 6.399 6.399 0 0 1-1.86-3.762.768.768 0 0 1 .196-.652.817.817 0 0 1 .625-.274.87.87 0 0 1 .64.266c.176.172.29.387.336.637.22 1.148.774 2.086 1.665 2.812a4.722 4.722 0 0 0 3.05 1.086 4.716 4.716 0 0 0 3.075-1.097 4.676 4.676 0 0 0 1.664-2.801c.046-.25.16-.465.332-.637a.855.855 0 0 1 .636-.266c.254 0 .465.094.63.274.167.18.234.398.198.652a6.399 6.399 0 0 1-1.859 3.762 6.285 6.285 0 0 1-3.766 1.84V19.5a.872.872 0 0 1-.895.898.878.878 0 0 1-.64-.257.86.86 0 0 1-.261-.641Z"/></svg></button>
+      <button class="icon" type="button" id="lens" title="Google 렌즈" aria-label="Google 렌즈">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4H8a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-1"/><circle cx="12" cy="12" r="3"/><circle cx="18.5" cy="5.5" r="1.6" fill="currentColor" stroke="none"/></svg></button>
+      <button class="ai" type="button" id="ai" aria-label="AI 모드">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.602 9.602c-.102 0-.168-.051-.204-.153a5.135 5.135 0 0 0-1.386-2.46 5.135 5.135 0 0 0-2.461-1.387c-.102-.036-.153-.102-.153-.204 0-.113.051-.183.153-.199a5.167 5.167 0 0 0 2.46-1.386 5.135 5.135 0 0 0 1.387-2.461c.036-.102.102-.153.204-.153.113 0 .183.051.199.153.25.949.715 1.765 1.398 2.449a5.312 5.312 0 0 0 2.45 1.398c.101.016.152.086.152.2 0 .101-.051.167-.153.203-.949.23-1.77.695-2.46 1.386A5.167 5.167 0 0 0 18.8 9.45c-.016.102-.086.153-.2.153Zm-9 6c-1.668 0-3.086-.586-4.25-1.75-1.168-1.168-1.75-2.586-1.75-4.25 0-1.668.582-3.086 1.750-4.250 1.164-1.168 2.582-1.75 4.25-1.75.28 0 .562.015.835.046.274.036.547.094.813.176.316.086.523.239.625.465a.972.972 0 0 1 .05.688.921.921 0 0 1-.386.535c-.191.125-.43.148-.715.062a2.999 2.999 0 0 0-.597-.136 5.422 5.422 0 0 0-.625-.04c-1.168 0-2.16.41-2.977 1.227-.816.816-1.227 1.809-1.227 2.977 0 1.164.41 2.156 1.227 2.972.816.817 1.809 1.227 2.977 1.227 1.164 0 2.156-.41 2.972-1.227.817-.816 1.227-1.808 1.227-2.972 0-.301.09-.528.273-.676a.948.948 0 0 1 .625-.227c.235 0 .442.074.625.227.184.148.278.375.278.676a5.92 5.92 0 0 1-.301 1.859c-.2.61-.492 1.172-.875 1.687l5.347 5.352a.874.874 0 0 1 .278.637.874.874 0 0 1-.278.636.874.874 0 0 1-.636.278.874.874 0 0 1-.637-.278l-5.352-5.347a5.881 5.881 0 0 1-1.687.875c-.606.199-1.227.3-1.86.3Z"/></svg>AI 모드</button>
+    </div>
+  </form>
+  <script src="newtab.js"></script>
+</body>
+</html>

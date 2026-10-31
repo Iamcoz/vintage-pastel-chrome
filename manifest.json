@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Surreal Series",
+  "version": "1.2.0",
+  "description": "하늘색 수건 틀, 분홍 풍선 툴바, 세이지 민트 새 탭",
+  "theme": {
+    "colors": {
+      "frame": [188, 203, 224],
+      "frame_inactive": [188, 203, 224],
+      "tab_background_text": [227, 223, 196],
+      "tab_background_text_inactive": [227, 223, 196],
+      "toolbar": [233, 179, 186],
+      "tab_text": [239, 236, 220],
+      "toolbar_text": [239, 236, 220],
+      "toolbar_button_icon": [133, 158, 122],
+      "bookmark_text": [239, 236, 220],
+      "omnibox_background": [230, 221, 164],
+      "omnibox_text": [239, 236, 220],
+      "ntp_background": [183, 203, 169],
+      "ntp_text": [230, 221, 164],
+      "ntp_link": [230, 221, 164]
+    }
+  }
+}
