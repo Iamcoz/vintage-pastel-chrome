@@ -3,19 +3,35 @@
 <head>
 <meta charset="utf-8">
 <title>새 탭 옵션</title>
+<script src="settings.js"></script>
 <style>
-  body { margin: 0; padding: 20px 24px; font-family: system-ui, "Apple SD Gothic Neo", sans-serif; font-size: 14px; color: #233247; min-width: 280px; }
-  h1 { font-size: 15px; font-weight: 600; margin: 0 0 12px; }
-  label { display: flex; align-items: center; gap: 10px; padding: 8px 0; cursor: pointer; }
+  body { margin: 0; padding: 20px 24px; font-family: system-ui, "Apple SD Gothic Neo", sans-serif; font-size: 14px; color: #233247; min-width: 340px; }
+  h1 { font-size: 15px; font-weight: 600; margin: 18px 0 8px; }
+  h1:first-of-type { margin-top: 0; }
+  label { display: flex; align-items: center; gap: 10px; padding: 6px 0; cursor: pointer; }
+  input[type="text"], select { font: inherit; padding: 6px 10px; border: 1px solid #C9C2C9; border-radius: 8px; width: 100%; box-sizing: border-box; }
   .chip { width: 64px; height: 22px; border-radius: 11px; flex: none; }
-  .pink { background: #E9B3BA; }
-  .glass { background: #B7CBA9 linear-gradient(rgba(239,236,220,.35), rgba(239,236,220,.35)); box-shadow: inset 0 1px 0 rgba(242,230,238,.6); }
+  .chip-pink { background: #E9B3BA; }
+  .chip-glass { background: #B7CBA9 linear-gradient(rgba(239,236,220,.35), rgba(239,236,220,.35)); box-shadow: inset 0 1px 0 rgba(242,230,238,.6); }
+  /* 미리보기: 새 탭과 같은 색 */
+  .preview { margin-top: 18px; height: 92px; border-radius: 12px; background: #B7CBA9; display: grid; place-items: center; overflow: hidden; }
+  .logo { color: #E6DDA4; font-family: var(--logo-font), sans-serif; font-weight: var(--logo-weight); font-size: 56px; letter-spacing: -1px; white-space: nowrap; }
+  .row { display: flex; gap: 8px; }
+  .row select { flex: 1; width: auto; min-width: 0; }
 </style>
 </head>
 <body>
+  <h1>로고 글자</h1>
+  <input type="text" id="logoText" maxlength="20" placeholder="iamcoz">
+
+  <h1>글꼴과 굵기</h1>
+  <div class="row"><select id="logoFont"></select><select id="logoWeight"></select></div>
+
+  <div class="preview"><div class="logo"></div></div>
+
   <h1>검색창 모양</h1>
-  <label><input type="radio" name="style" value="pink"><span class="chip pink"></span>분홍(툴바와 같은 색)</label>
-  <label><input type="radio" name="style" value="glass"><span class="chip glass"></span>투명</label>
+  <label><input type="radio" name="searchStyle" value="pink"><span class="chip chip-pink"></span>분홍(툴바와 같은 색)</label>
+  <label><input type="radio" name="searchStyle" value="glass"><span class="chip chip-glass"></span>투명</label>
   <script src="options.js"></script>
 </body>
 </html>

@@ -5,9 +5,8 @@
 <title>새 탭</title>
 <!-- 빈 아이콘: 없으면 크롬이 탭에 확장 이름 첫 글자(V) 아이콘을 띄운다 -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E">
-<!-- 검색창 모양 옵션을 그리기 전에 읽어야 깜빡이지 않는다 -->
-<script src="style-option.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400&display=block">
+<!-- 옵션(검색창 모양, 로고 글자, 글꼴, 굵기)을 그리기 전에 읽어야 깜빡이지 않는다 -->
+<script src="settings.js"></script>
 <style>
   /* 색은 테마(../manifest.json)와 같은 값 */
   :root {
@@ -28,8 +27,8 @@
     padding-top: 56px; box-sizing: border-box; /* 크롬 새 탭 위쪽 Google 바 높이만큼 */
   }
   .logo-area { min-height: 168px; margin-bottom: 38px; display: flex; flex-direction: column; justify-content: flex-end; }
-  /* 크롬 새 탭 로고 자리(272x92)에 Google Sans 글꼴로 쓴 이름 */
-  .logo { height: 92px; line-height: 92px; color: var(--title); font-family: "Google Sans", sans-serif; font-size: 85px; letter-spacing: -1.8px; position: relative; top: -8px; }
+  /* 크롬 새 탭 로고 자리(272x92)에 쓴 이름. 글자, 글꼴, 굵기는 옵션 창에서 바꾼다 */
+  .logo { height: 92px; line-height: 92px; color: var(--title); font-family: var(--logo-font, "Google Sans"), sans-serif; font-weight: var(--logo-weight, 500); font-size: 85px; letter-spacing: -1.8px; position: relative; top: -8px; text-align: center; white-space: nowrap; }
   form { width: var(--box-width); }
   /* 검색창 모양은 크롬 새 탭 검색창과 같게: 왼쪽 +, 가운데 입력, 오른쪽 마이크, 렌즈, AI 모드 */
   .box {
@@ -59,7 +58,7 @@
 </style>
 </head>
 <body>
-  <div class="logo-area"><div class="logo">iamcoz</div></div>
+  <div class="logo-area"><div class="logo"></div></div>
   <form id="search" action="https://www.google.com/search" method="get" role="search">
     <div class="box">
       <button class="icon" type="button" id="plus" title="AI 모드에서 파일 추가" aria-label="AI 모드 열기">
