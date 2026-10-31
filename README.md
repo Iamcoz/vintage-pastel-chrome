@@ -41,7 +41,6 @@
 - 시크릿 창 색은 따로 정하지 않았다. 크롬이 창 틀 색으로 알아서 만든다.
 
 ## 라이선스
-[PolyForm Noncommercial 1.0.0](LICENSE)이에요.
-- 개인 사용, 공부, 취미처럼 돈을 벌지 않는 목적이면 자유롭게 쓰고 고쳐서 나눠도 돼요. 나눌 때는 `LICENSE` 파일을 같이 넣어 주세요.
-- 상업적으로 쓰려면(판매, 유료 서비스나 제품에 넣기, 회사 업무용 배포 등) 먼저 허락을 받아야 해요. 이 저장소의 [Issues](https://github.com/Iamcoz/vintage-pastel-chrome/issues)에 문의해 주세요.
-- 새 탭의 마이크, AI 모드 아이콘은 Chromium에서 가져온 것이라 BSD 라이선스를 따르고, 고지는 [NOTICE](NOTICE)에 있어요.
+[MIT](LICENSE)예요. 누구나 자유롭게 쓰고 고치고 나눠도 돼요. 나눌 때는 `LICENSE` 파일(저작권 표시)을 같이 넣어 주세요.
+
+새 탭의 마이크, AI 모드 아이콘은 Chromium에서 가져온 것이라 BSD 라이선스를 따르고, 고지는 [NOTICE](NOTICE)에 있어요.
